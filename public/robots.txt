@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://stepforge.guruchanworks.com/sitemap.xml

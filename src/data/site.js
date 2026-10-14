@@ -3,6 +3,7 @@ import weapons from './weapons.json';
 // Set this to the App Store URL once the listing is live. While it is empty,
 // every store button reads "Coming soon to the App Store" and is not a link.
 export const APP_STORE_URL = '';
+export const SUPPORT_EMAIL = 'tania.dev.ph@gmail.com';
 
 export const asset = (path) => `${import.meta.env.BASE_URL}${path}`;
 

@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import Embers from './Embers.jsx';
 import AppStoreButton from './AppStoreButton.jsx';
 import { Eyebrow, Reveal, Title } from './Reveal.jsx';
-import { NAV, PRO_PERKS, asset } from '../data/site.js';
+import { NAV, PRO_PERKS, SUPPORT_EMAIL, asset } from '../data/site.js';
 import { scrollToId } from '../lib/scroll.js';
 
 const STARS = ['#cfe3ff', '#ffe6b0', '#9fd1ff'];
@@ -103,6 +103,12 @@ export function Footer() {
       </div>
       <div className="wrap footer__legal">
         <p>© {new Date().getFullYear()} Stepforge. All rights reserved.</p>
+        <nav className="footer__policies" aria-label="Support and policies">
+          <a href="#privacy" onClick={(e) => { e.preventDefault(); scrollToId('privacy'); }}>Privacy Policy</a>
+          <a href="#terms" onClick={(e) => { e.preventDefault(); scrollToId('terms'); }}>Terms of Service</a>
+          <a href="#support" onClick={(e) => { e.preventDefault(); scrollToId('support'); }}>Support / FAQ</a>
+          <a href={`mailto:${SUPPORT_EMAIL}`}>Contact Support</a>
+        </nav>
         <p>
           Apple, the Apple logo, iPhone, Apple Health and App Store are trademarks of Apple Inc., registered in the U.S.
           and other countries. Display type: MedievalSharp, SIL Open Font License.

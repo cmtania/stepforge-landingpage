@@ -9,7 +9,6 @@ import Realms from './components/Realms.jsx';
 import Disciples from './components/Disciples.jsx';
 import Duel from './components/Duel.jsx';
 import Armory from './components/Armory.jsx';
-import Legal from './components/Legal.jsx';
 import { FinalCall, Footer, Pro } from './components/Closing.jsx';
 import { SoundProvider } from './lib/sound.jsx';
 import { startSmoothScroll } from './lib/scroll.js';
@@ -35,7 +34,6 @@ export default function App() {
           <Armory />
           <Pro />
           <FinalCall />
-          <Legal />
         </main>
         <Footer />
         <div className="grain" aria-hidden="true" />

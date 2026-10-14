@@ -39,14 +39,14 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
           transition={{ duration: 1.6, delay: 0.5, ease }}
         >
+          <span className="hero__glow" aria-hidden="true" />
           <span className="hero__flash" aria-hidden="true" />
-          <img className="hero__glow" src={asset('img/brand/sovereigns.webp')} alt="" aria-hidden="true" />
           <img
-            className="hero__shoes"
-            src={asset('img/brand/sovereigns.webp')}
-            alt="Stepstorm Sovereigns, a pair of red and gold lightning shoes"
-            width="720"
-            height="720"
+            className="hero__chest"
+            src={asset('app-icon.png')}
+            alt="Stepforge's wind-chest logo with its glowing paired-footsteps emblem"
+            width="512"
+            height="512"
           />
         </motion.div>
 

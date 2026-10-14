@@ -1,10 +1,21 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-// base './' keeps every URL relative, so the build works at
-// https://stepforge.guruchanworks.com/ (or the GitHub Pages project path)
-// without hard-coding the repo name.
+const root = fileURLToPath(new URL('.', import.meta.url));
+
 export default defineConfig({
-  base: './',
+  base: '/',
   plugins: [react()],
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(root, 'index.html'),
+        privacy: resolve(root, 'privacy/index.html'),
+        terms: resolve(root, 'terms/index.html'),
+        support: resolve(root, 'support/index.html'),
+      },
+    },
+  },
 });

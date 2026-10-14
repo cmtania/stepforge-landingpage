@@ -34,13 +34,13 @@ const FAQ = [
   },
 ];
 
-function DocumentSection({ id, eyebrow, title, children }) {
+function DocumentSection({ id, eyebrow, title, headingAs = 'h2', children }) {
   return (
     <section className="legal__section" id={id} aria-label={title}>
       <div className="wrap legal__wrap">
         <header className="legal__head">
           <Eyebrow>{eyebrow}</Eyebrow>
-          <Title as="h2" className="legal__title">{title}</Title>
+          <Title as={headingAs} className="legal__title">{title}</Title>
         </header>
         <div className="legal__copy">
           <p className="legal__updated">Last updated {UPDATED}</p>
@@ -51,32 +51,35 @@ function DocumentSection({ id, eyebrow, title, children }) {
   );
 }
 
-export default function Legal() {
+export function SupportSection({ headingAs = 'h2' } = {}) {
   return (
-    <div className="legal">
-      <section className="legal__section legal__support" id="support" aria-label="Support and frequently asked questions">
-        <div className="wrap legal__wrap">
-          <header className="legal__head">
-            <Eyebrow>Wayfarer’s help desk</Eyebrow>
-            <Title as="h2" className="legal__title">Support &amp; FAQ</Title>
-            <p className="legal__lede">Quick answers for your walk, your collection, and your purchases.</p>
-          </header>
-          <div className="legal__faq" aria-label="Frequently asked questions">
-            {FAQ.map(({ q, a }, index) => (
-              <details className="legal__question" key={q}>
-                <summary><span>{q}</span><span className="legal__number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span></summary>
-                <p>{a}</p>
-              </details>
-            ))}
-          </div>
-          <a className="legal__contact" href={`mailto:${SUPPORT_EMAIL}?subject=Stepforge%20Support`}>
-            <span>Still need a hand?</span>
-            <strong>{SUPPORT_EMAIL}</strong>
-          </a>
+    <section className="legal__section legal__support" id="support" aria-label="Support and frequently asked questions">
+      <div className="wrap legal__wrap">
+        <header className="legal__head">
+          <Eyebrow>Wayfarer’s help desk</Eyebrow>
+          <Title as={headingAs} className="legal__title">Support &amp; FAQ</Title>
+          <p className="legal__lede">Quick answers for your walk, your collection, and your purchases.</p>
+        </header>
+        <div className="legal__faq" aria-label="Frequently asked questions">
+          {FAQ.map(({ q, a }, index) => (
+            <details className="legal__question" key={q}>
+              <summary><span>{q}</span><span className="legal__number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span></summary>
+              <p>{a}</p>
+            </details>
+          ))}
         </div>
-      </section>
+        <a className="legal__contact" href={`mailto:${SUPPORT_EMAIL}?subject=Stepforge%20Support`}>
+          <span>Still need a hand?</span>
+          <strong>{SUPPORT_EMAIL}</strong>
+        </a>
+      </div>
+    </section>
+  );
+}
 
-      <DocumentSection id="privacy" eyebrow="Your walk. Your data." title="Privacy Policy">
+export function PrivacyPolicySection({ headingAs = 'h2' } = {}) {
+  return (
+      <DocumentSection id="privacy" eyebrow="Your walk. Your data." title="Privacy Policy" headingAs={headingAs}>
         <h3>Information Stepforge uses</h3>
         <p>With your permission, Stepforge reads step count, walking and running distance, and active energy from Apple Health. These readings support activity displays and game progress. Stepforge does not write data to Apple Health. You can change or revoke Health access in Apple Health settings.</p>
         <p>Your collection, preferences, and Health-derived progress are stored on your device. A small activity snapshot is shared locally with Stepforge widgets. The app does not require a Stepforge account and does not use advertising, analytics, or cross-app tracking.</p>
@@ -93,8 +96,12 @@ export default function Legal() {
         <h3>Website and contact</h3>
         <p>This website does not ask you to create an account. If you email support, we use the information in your message to respond and help resolve your request. Contact <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> with privacy questions or requests.</p>
       </DocumentSection>
+  );
+}
 
-      <DocumentSection id="terms" eyebrow="The rules of the road" title="Terms of Service">
+export function TermsOfServiceSection({ headingAs = 'h2' } = {}) {
+  return (
+      <DocumentSection id="terms" eyebrow="The rules of the road" title="Terms of Service" headingAs={headingAs}>
         <h3>Using Stepforge</h3>
         <p>Stepforge is a walking game for iPhone. By using the app or this website, you agree to use them lawfully and not to interfere with their operation, misrepresent activity data, or attempt to disrupt other users’ access. You must have permission to use the Apple Account and device associated with your purchases.</p>
 
@@ -114,6 +121,40 @@ export default function Legal() {
         <h3>Questions</h3>
         <p>For questions about these terms, contact <a href={`mailto:${SUPPORT_EMAIL}?subject=Stepforge%20Terms`}>{SUPPORT_EMAIL}</a>.</p>
       </DocumentSection>
+  );
+}
+
+export function LegalPage({ page }) {
+  const views = {
+    privacy: { title: 'Privacy Policy', description: 'How Stepforge handles Apple Health activity, on-device game data, optional iCloud collection backup, and support requests.', component: PrivacyPolicySection },
+    terms: { title: 'Terms of Service', description: 'Terms for using Stepforge, including activity data, free features, and optional Pro purchases.', component: TermsOfServiceSection },
+    support: { title: 'Support & FAQ', description: 'Answers about Stepforge steps, chests, Apple Health, Pro plans, purchases, and iCloud collection backup.', component: SupportSection },
+  };
+  const selected = views[page] ?? views.support;
+  const PageContent = selected.component;
+
+  return (
+    <div className="legal-page">
+      <header className="legal-site-header">
+        <a className="legal-site-brand" href="/" aria-label="Stepforge home">
+          <img src="/app-icon.png" width="42" height="42" alt="" />
+          <span>Stepforge</span>
+        </a>
+        <nav aria-label="Site navigation">
+          <a href="/">Home</a>
+          <a href="/support">Support</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+        </nav>
+      </header>
+      <main className="legal">
+        <PageContent headingAs="h1" />
+      </main>
+      <footer className="legal-site-footer">
+        <span>© {new Date().getFullYear()} Stepforge</span>
+        <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
+      </footer>
+      <div className="grain" aria-hidden="true" />
     </div>
   );
 }

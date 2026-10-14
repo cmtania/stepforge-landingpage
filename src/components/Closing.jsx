@@ -104,9 +104,9 @@ export function Footer() {
       <div className="wrap footer__legal">
         <p>© {new Date().getFullYear()} Stepforge. All rights reserved.</p>
         <nav className="footer__policies" aria-label="Support and policies">
-          <a href="#privacy" onClick={(e) => { e.preventDefault(); scrollToId('privacy'); }}>Privacy Policy</a>
-          <a href="#terms" onClick={(e) => { e.preventDefault(); scrollToId('terms'); }}>Terms of Service</a>
-          <a href="#support" onClick={(e) => { e.preventDefault(); scrollToId('support'); }}>Support / FAQ</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/support">Support / FAQ</a>
           <a href={`mailto:${SUPPORT_EMAIL}`}>Contact Support</a>
         </nav>
         <p>

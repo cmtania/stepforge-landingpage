@@ -21,7 +21,7 @@ export default function Hero() {
     <section className="hero" id="top" ref={ref}>
       <motion.div className="hero__bg" style={{ y: bgY, scale: bgScale }}>
         <motion.img
-          src={asset('img/scene/summit-path.webp')}
+          src={asset('img/scene/summit-path.webp?v=20261015')}
           alt=""
           initial={{ scale: 1.22, filter: 'blur(14px) brightness(0.4)' }}
           animate={{ scale: 1, filter: 'blur(0px) brightness(1)' }}
@@ -43,7 +43,7 @@ export default function Hero() {
           <span className="hero__flash" aria-hidden="true" />
           <img
             className="hero__chest"
-            src={asset('app-icon.png')}
+            src={asset('app-icon.png?v=20261015')}
             alt="Stepforge's wind-chest logo with its glowing paired-footsteps emblem"
             width="512"
             height="512"

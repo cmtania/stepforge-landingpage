@@ -47,7 +47,7 @@ export default function Nav() {
   return (
     <header className={`nav ${solid ? 'nav--solid' : ''}`}>
       <a className="nav__brand" href="#top" onClick={go('top')}>
-        <img src={asset('app-icon.png')} alt="" width="36" height="36" />
+        <img src={asset('app-icon.png?v=20261015')} alt="" width="36" height="36" />
         <span>Stepforge</span>
       </a>
 

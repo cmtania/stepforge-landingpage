@@ -137,7 +137,7 @@ export function LegalPage({ page }) {
     <div className="legal-page">
       <header className="legal-site-header">
         <a className="legal-site-brand" href="/" aria-label="Stepforge home">
-          <img src="/app-icon.png" width="42" height="42" alt="" />
+          <img src="/app-icon.png?v=20261015" width="42" height="42" alt="" />
           <span>Stepforge</span>
         </a>
         <nav aria-label="Site navigation">

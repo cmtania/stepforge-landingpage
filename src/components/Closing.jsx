@@ -55,7 +55,7 @@ export function FinalCall() {
       <Embers density={0.8} />
       <div className="wrap final__inner">
         <Reveal>
-          <img className="final__icon" src={asset('app-icon.png')} alt="" width="112" height="112" loading="lazy" />
+          <img className="final__icon" src={asset('app-icon.png?v=20261015')} alt="" width="112" height="112" loading="lazy" />
         </Reveal>
         <Title as="h2" className="final__title">
           Take your first step.
@@ -79,7 +79,7 @@ export function Footer() {
     <footer className="footer">
       <div className="wrap footer__grid">
         <div className="footer__brand">
-          <img src={asset('app-icon.png')} alt="" width="48" height="48" loading="lazy" />
+          <img src={asset('app-icon.png?v=20261015')} alt="" width="48" height="48" loading="lazy" />
           <div>
             <strong>Stepforge</strong>
             <span>Every step forges a legend.</span>
